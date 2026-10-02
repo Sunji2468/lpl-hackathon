@@ -1,0 +1,11 @@
+import 'dotenv/config';
+import { defineConfig } from 'prisma/config';
+import { databaseUrl } from './src/config/database.js';
+
+export default defineConfig({
+  schema: 'prisma/schema.prisma',
+  migrations: { path: 'prisma/migrations' },
+  datasource: {
+    url: process.env.DATABASE_URL || process.env.DATABASE_PASSWORD ? databaseUrl() : undefined,
+  },
+});
