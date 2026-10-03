@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { login } from './api/auth.js'
 import './App.css'
 
 function App() {
@@ -7,14 +8,22 @@ function App() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [session, setSession] = useState(null)
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
-
-    if(email=== 'client@lpl.com' && password === 'pass123'){
-      window.location.href = '/dashboard'
-    } else {
-      setError('Invalid email or password')
+    if (isLoading) return
+    setError('')
+    setIsLoading(true)
+    try {
+      setSession(await login(email, password))
+      setPassword('')
+      setShowPassword(false)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -30,12 +39,25 @@ function App() {
 
         <div className="loginContent">
 
+          {session ? (
+            <section className="loginHeader" aria-label="Signed-in account">
+              <h1>You’re signed in</h1>
+              <p>{session.user.email}</p>
+              <button type="button" className="LogInButton" onClick={() => {
+                setSession(null)
+                setPassword('')
+                setError('')
+              }}>
+                Sign out
+              </button>
+            </section>
+          ) : <>
           <div className="loginHeader">
             <h1>Welcome back!</h1>
             <p>Sign in to your client account</p>
           </div>
 
-          <form className="loginForm" onSubmit={handleLogin}>
+          <form className="loginForm" onSubmit={handleLogin} aria-busy={isLoading}>
 
             <div className="formGroup">
               <label htmlFor="email">Email</label>
@@ -43,9 +65,12 @@ function App() {
               <input
                 id="email"
                 type="email"
+                required
+                autoComplete="username"
+                disabled={isLoading}
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => { setEmail(e.target.value); setError('') }}
               />
             </div>
 
@@ -60,14 +85,18 @@ function App() {
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
+                  required
+                  autoComplete="current-password"
+                  disabled={isLoading}
                   placeholder="Enter your password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => { setPassword(e.target.value); setError('') }}
                 />
 
                 <button
                   type="button"
                   className="showButton"
+                  disabled={isLoading}
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? 'Hide' : 'Show'}
@@ -84,12 +113,13 @@ function App() {
               <span>Remember me</span>
             </label>
 
-            {error && <div className="errorLogin">{error}</div>}
-            <button type="submit" className="LogInButton">
-              Log in
+            {error && <div className="errorLogin" role="alert">{error}</div>}
+            <button type="submit" className="LogInButton" disabled={isLoading}>
+              {isLoading ? 'Signing in…' : 'Log in'}
             </button>
 
           </form>
+          </>}
 
         
 
