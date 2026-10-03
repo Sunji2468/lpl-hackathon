@@ -30,6 +30,29 @@ const requestSchema = z.object({
       .optional(),
   }),
 });
+router.post('/briefing/:clientId', async (req, res, next) => {
+  try {
+    const rawClient = await getClientById(req.params.clientId)
+
+    if (!rawClient) {
+      return res.status(404).json({
+        error: 'Client not found',
+      })
+    }
+
+    const client = adaptClientForBriefing(rawClient)
+
+    const result = await generateClientBriefing(client)
+
+    return res.json({
+      clientId: rawClient.id,
+      generatedAt: new Date().toISOString(),
+      ...result,
+    })
+  } catch (err) {
+    next(err)
+  }
+})
 
 export function advisorRouter({ jwtSecret }) {
   const router = Router();

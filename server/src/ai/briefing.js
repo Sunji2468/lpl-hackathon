@@ -55,10 +55,15 @@ function calculateMetrics(client) {
       : Math.round(
           (completedItems / onboardingItems.length) * 1000,
         ) / 10;
-
+  const cashAllocation =
+    totalPortfolioValue > 0
+      ? Math.round((cash / totalPortfolioValue) * 1000) / 10
+      : 0;
+  
   return {
     totalPortfolioValue,
     cash,
+    cashAllocation,
     sectorAllocation,
     onboardingCompletion,
   };
@@ -108,7 +113,7 @@ export async function generateClientBriefing(client) {
         ],
 
         inferenceConfig: {
-          maxTokens: 1800,
+          maxTokens: 4000,
         },
       }),
     ),
@@ -117,6 +122,8 @@ export async function generateClientBriefing(client) {
   const text = response.output.message.content
     .map((part) => part.text ?? '')
     .join('');
+
+  console.log('\nRAW BEDROCK RESPONSE:\n', text)
 
   const briefing = briefingSchema.parse(
     extractJson(text),
