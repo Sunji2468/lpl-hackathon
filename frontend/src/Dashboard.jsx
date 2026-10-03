@@ -27,7 +27,7 @@ import {
 
 import './Dashboard.css'
 
-function Dashboard({onClientSelect, session}) {
+function Dashboard({ session }) {
   const [aiBriefing, setAiBriefing] = useState(null)
   const [selectedClient, setSelectedClient] = useState(null)
   const [aiLoading, setAiLoading] = useState(false)
