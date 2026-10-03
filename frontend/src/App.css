@@ -199,8 +199,13 @@ body {
   transition: opacity 0.2s;
 }
 
-.signInButton:hover{
+.LogInButton:hover:not(:disabled){
   opacity: 0.9;
+}
+
+.LogInButton:disabled {
+  opacity: 0.65;
+  cursor: wait;
 }
 
 .signInButton,
