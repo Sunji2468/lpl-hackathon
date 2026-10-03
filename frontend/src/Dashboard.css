@@ -1,8 +1,34 @@
+:root{
+     --blue: #2563EB;
+     --blue-light: #EEF4FF;
+     --blue-accent:#3B82F6;
+     --navy: #173B67;
+     --white: #ffffff;
+
+     --page-bg: #F5F8FC;
+     --border: #E2E8F0;
+
+     --text-muted: #64748B;
+     --text-primary: #172B4D;
+     --text-secondary: #475569;
+
+     --warning: #cf740b;
+     --success: #16A34A;
+     --danger: #DC2626;
+
+}
+
+
+
+
+
+
+
 .dashboardPage {
 
   width: 100%;
-  background: #f4f6f9;
-  color: #162b4d;
+  background: var(--page-bg);
+  color: var(--text-primary);
 
   min-height: 100vh;
   display: flex;
@@ -12,8 +38,8 @@
 /* Sidebar is here*/
 
 .sidebar {
-  background: #ffffff;
-  border-right: 1px solid #e6eaf0;
+  background: var(--page-bg);
+  border-right: 1px solid var(--border);
   width: 244px;
   min-height: 100vh;
   
@@ -25,7 +51,7 @@
 }
 
 .sidebarLogo {
- color: #172b4d;
+ color: var(--text-primary);
   
   gap: 8px;
   padding: 0 12px;
@@ -41,7 +67,7 @@
 
 .logoMark {
  color: white;
- background: #2855d9;
+ background: var(--blue);
   width: 32px;
   height: 32px;
   
@@ -98,13 +124,13 @@
 
 .navItem:hover {
   background: #f4f6fa;
-  color: #2855d9;
+  color: var(--blue);
 }
 
-navItem.active {
+.navItem.active {
 
   background: #edf2ff;
-  color: #2855d9;
+  color: var(--blue);
   font-weight: 700;
 }
 
@@ -129,7 +155,7 @@ navItem.active {
 
 .active .navBadge {
   background: #dbe4ff;
-  color: #2855d9;
+  color: var(--blue);
 }
 
 .sidebarBottom {
@@ -165,7 +191,7 @@ navItem.active {
 
 .sidebarBottomItem:hover{
     background: #f4f6f9;
-    color: #2855d9;
+    color: var(--blue);
 }
 
 .sidebarProfile {
@@ -227,7 +253,6 @@ navItem.active {
 .topBar{
     width: 100%;
 
-    height: 64px;
     background: #ffffff;
     border-bottom: 1px solid #e6eaf0;
     height: 70px;
@@ -330,11 +355,11 @@ navItem.active {
 
 .notificationButton:hover {
   background: #f6f8fb;
-  color: #2855d9;
+  color: var(--blue);
 }
 
 .notificationDot {
-   background: #2855d9;
+   background: var(--blue);
 
    width: 5px;
    height: 5px;
@@ -574,32 +599,34 @@ navItem.active {
 
 }
 
+/* just different shades of blue with unique variable names */
+
 .statIcon.blue {
 
-  background: #eaf0ff;
-  color: #315bd3;
+  background: #EAF2FF;
+  color: #2563EB;
 
 }
 
 .statIcon.purple {
 
-  background: #f0ebff;
-  color: #7351c8;
+  background: #EEF4FF;
+  color: #3B82F6;
 
 
 }
 
 .statIcon.green {
 
-  background: #e8f6ef;
-  color: #30855d;
+  background: #E8F1FB;
+  color:  #173B67;
 
 }
 
 .statIcon.orange {
-  background: #fff1df;
+  background: #DCEAFF;
 
-  color: #bc7734;
+  color:  #2F6FDB;
 
 }
 
@@ -648,7 +675,7 @@ navItem.active {
 .statDescription {
   color: #a0a8b3;
 
-  font-size: 12x;
+  font-size: 12px;
 
 }
 
@@ -1126,7 +1153,7 @@ navItem.active {
 @media (max-width: 1100px)
 {
     .sidebar{
-        width: 200;
+        width: 200px;
     }
 
     .pageContent{
