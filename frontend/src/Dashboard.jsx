@@ -1,4 +1,6 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { generateBriefing } from './api/advisor.js'
+
 
 import {
   Bell,
@@ -25,11 +27,34 @@ import {
 
 import './Dashboard.css'
 
-function Dashboard({onClientSelect}) {
-    const clients = [
-        {
-        name: 'John Doe',
-        initials: 'JD',
+function Dashboard({onClientSelect, session}) {
+  const [aiBriefing, setAiBriefing] = useState(null)
+  const [selectedClient, setSelectedClient] = useState(null)
+  const [aiLoading, setAiLoading] = useState(false)
+  const [aiError, setAiError] = useState('')
+
+  const handleBriefing = async (client) => {
+    if (aiLoading) return
+
+    setSelectedClient(client)
+    setAiLoading(true)
+    setAiError('')
+    setAiBriefing(null)
+
+  try {
+    const data = await generateBriefing(client.id, session)
+    setAiBriefing(data.briefing)
+  } catch (err) {
+    setAiError(err.message)
+  } finally {
+    setAiLoading(false)
+  }
+}
+  const clients = [
+      {
+        id: 'client-001',
+        name: 'Sarah Lee',
+        initials: 'SL',
         status: 'Needs to be reviewed',
         focus: 'Retirement Planning',
         risk: 'Moderate',
@@ -44,9 +69,10 @@ function Dashboard({onClientSelect}) {
 
     },
     {
-        name: 'Jane Smith',
-        initials: 'JS',
-        status: 'Reviewed',
+      id: 'client-001',
+      name: 'Marcus Bennett',
+      initials: 'MB',
+      status: 'Reviewed',
         focus: 'Wealth Growth',
         risk: 'High',
         insight: 'Client is focused on aggressive growth strategies and is open to higher risk investments for potential higher returns.' +
@@ -59,9 +85,10 @@ function Dashboard({onClientSelect}) {
         updated: '2 days ago'
     },
     {
-        name: 'Michael Johnson',
-        initials: 'MJ',
-        status: 'Needs to be reviewed',
+      id: 'client-003',
+      name: 'Elena Rivera',
+      initials: 'ER',
+      status: 'Needs to be reviewed',
         focus: 'Estate Planning',
         risk: 'Low',
         insight: 'Client is interested in estate planning and ensuring their assets are distributed according to their wishes.' +
@@ -193,12 +220,8 @@ function Dashboard({onClientSelect}) {
 
         {/* the page content goes here */}
 
-        <motion.div
-            className= "pageContent"
-            initial ={{opacity: 0, y:14}}
-            animate= {{opacity: 1,y:0}}
-            transition= {{duration: 0.4, ease: 'easeOut'}}
-        >
+        <div className="pageContent">
+
           {/*advisor section*/}
 
           <section className="advisorSection">
@@ -221,7 +244,7 @@ function Dashboard({onClientSelect}) {
             </div>
 
             <div className="dateDisplay">
-              <span>Friday, October 3</span>
+              <span>Friday, October 2</span>
               <strong>2026</strong>
             </div>
 
@@ -517,13 +540,17 @@ function Dashboard({onClientSelect}) {
                       Updated {client.updated}
                     </div>
 
-                    <button
-                      className="briefingButton"
-                      onClick={() => onClientSelect?.(client)}
-                    >
-                      View briefing
-                      <ArrowUpRight size={15} />
-                    </button>
+                  <button
+                    className="briefingButton"
+                    onClick={() => handleBriefing(client)}
+                    disabled={aiLoading}
+                  >
+                    {aiLoading && selectedClient?.id === client.id
+                    ? 'Generating...'
+                    : 'View briefing'}
+
+                    <ArrowUpRight size={15} />
+                  </button>
 
                   </div>
 
@@ -532,7 +559,44 @@ function Dashboard({onClientSelect}) {
               ))}
 
             </div>
+            {aiError && (
+              <div className="ai-live-briefing">
+                <p>{aiError}</p>
+              </div>
+            )}
 
+            {aiBriefing && selectedClient && (
+              <div className="ai-live-briefing">
+                <div className="sectionEyebrow">LIVE AI BRIEFING</div>
+
+              <h2>{selectedClient.name}</h2>
+
+              <p>{aiBriefing.clientSummary}</p>
+
+              <h3>Portfolio Highlights</h3>
+              <ul>
+                {aiBriefing.portfolioHighlights?.map((item, index) => (
+                  <li key={index}>{item.finding}</li>
+              ))}
+            </ul>
+
+            <h3>Needs Attention</h3>
+            <ul>
+              {aiBriefing.attentionItems?.map((item, index) => (
+                <li key={index}>
+                  <strong>{item.priority}:</strong> {item.finding}
+                </li>
+              ))}
+            </ul>
+
+            <h3>Questions for Client</h3>
+            <ul>
+              {aiBriefing.questionsForClient?.map((question, index) => (
+                <li key={index}>{question}</li>
+            ))}
+          </ul>
+        </div>
+      )}
           </section>
 
 
@@ -612,7 +676,7 @@ function Dashboard({onClientSelect}) {
 
           </section>
 
-        </motion.div>
+        </div>
 
       </main>
 

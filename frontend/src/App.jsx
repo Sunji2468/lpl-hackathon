@@ -4,8 +4,8 @@ import './App.css'
 import Dashboard from './Dashboard'
 
 function App() {
-
-const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [page, setPage] = useState('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -14,44 +14,49 @@ const [showPassword, setShowPassword] = useState(false)
 
   const handleLogin = async (e) => {
     e.preventDefault()
+
     if (isLoading) return
 
     setError('')
     setIsLoading(true)
 
     try {
-       setSession(await login(email, password))
-       setPassword('')
-       setShowPassword(false)
+      const result = await login(email, password)
+
+      setSession(result)
+      setPassword('')
+      setShowPassword(false)
+      setPage('dashboard')
     } catch (err) {
       setError(err.message)
     } finally {
       setIsLoading(false)
     }
+  }
 
+  if (page === 'dashboard') {
+    return <Dashboard session={session} />
   }
-  if (session) {
-    return <Dashboard />
-  }
+
   return (
     <div className="loginPage">
-
       <header className="header">
-        <div className="logo">Oriented</div>
+        <div className="logo">LPL Financial</div>
       </header>
 
       <main className="loginBox">
-
         <div className="loginContent">
 
-          
           <div className="loginHeader">
             <h1>Welcome back!</h1>
             <p>Sign in to your client account</p>
           </div>
 
-          <form className="loginForm" onSubmit={handleLogin} aria-busy={isLoading}>
-
+          <form
+            className="loginForm"
+            onSubmit={handleLogin}
+            aria-busy={isLoading}
+          >
             <div className="formGroup">
               <label htmlFor="email">Email</label>
 
@@ -63,15 +68,16 @@ const [showPassword, setShowPassword] = useState(false)
                 disabled={isLoading}
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) => { setEmail(e.target.value); setError('') }}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  setError('')
+                }}
               />
             </div>
 
             <div className="formGroup">
               <div className="passLabel">
                 <label htmlFor="password">Password</label>
-
-                
               </div>
 
               <div className="passInput">
@@ -83,7 +89,10 @@ const [showPassword, setShowPassword] = useState(false)
                   disabled={isLoading}
                   placeholder="Enter your password"
                   value={password}
-                  onChange={(e) => { setPassword(e.target.value); setError('') }}
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                    setError('')
+                  }}
                 />
 
                 <button
@@ -98,7 +107,7 @@ const [showPassword, setShowPassword] = useState(false)
             </div>
 
             <button type="button" className="forgotButton">
-                  Forgot password?
+              Forgot password?
             </button>
 
             <label className="remember">
@@ -106,21 +115,23 @@ const [showPassword, setShowPassword] = useState(false)
               <span>Remember me</span>
             </label>
 
-         {error && <div className="errorLogin" role="alert">{error}</div>}
+            {error && (
+              <div className="errorLogin" role="alert">
+                {error}
+              </div>
+            )}
 
-          <button type="submit" className="LogInButton" disabled={isLoading}>
-          {isLoading ? 'Signing in…' : 'Log in'}
-         </button>
-
+            <button
+              type="submit"
+              className="LogInButton"
+              disabled={isLoading}
+            >
+              {isLoading ? 'Signing in…' : 'Log in'}
+            </button>
           </form>
-        
-
-        
 
         </div>
-
       </main>
-
     </div>
   )
 }
