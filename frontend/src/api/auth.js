@@ -1,4 +1,19 @@
 export async function login(email, password) {
+  // Temporary demo login — local development only.
+if (
+  import.meta.env.DEV &&
+  email.trim().toLowerCase() === 'client@lpl.com' &&
+  password === 'pass123'
+) {
+  return {
+    user: {
+      id: 'demo-advisor',
+      email: 'client@lpl.com',
+    },
+    token: null,
+    isDemo: true,
+  }
+}
   let response
   try {
     response = await fetch('/api/auth/login', {

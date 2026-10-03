@@ -1,0 +1,166 @@
+[
+  {
+    "id": "client-001",
+    "name": "Sarah Lee",
+    "synthetic": true,
+    "asOf": "2026-10-02",
+    "priority": "high",
+    "onboardingStatus": "not_started",
+    "outstandingTaskCount": 2,
+    "profile": {
+      "clientSince": "2019-05-10",
+      "lifeStage": "Preparing for retirement",
+      "goals": ["Retire in 2031", "Plan for healthcare costs", "Support an elderly parent"],
+      "riskPreference": "Conservative",
+      "retirementYear": 2031
+    },
+    "communicationPreferences": { "channel": "phone", "frequency": "quarterly", "notes": "Prefers a short written recap after calls." },
+    "portfolioHistory": [
+      { "date": "2022-03-15", "totalValueUsd": 920000, "allocation": { "equities": 75, "fixedIncome": 20, "cash": 5 }, "sourceRecordId": "sarah-001" },
+      { "date": "2025-01-22", "totalValueUsd": 1080000, "allocation": { "equities": 58, "fixedIncome": 34, "cash": 8 }, "sourceRecordId": "sarah-004" }
+    ],
+    "history": [
+      { "id": "sarah-001", "date": "2022-03-15", "type": "meeting_note", "text": "Sarah plans to retire in 2034 and describes her risk preference as moderate. Portfolio snapshot: $920,000 total, 75% equities, 20% fixed income, 5% cash. Prefers email updates at this time." },
+      { "id": "sarah-002", "date": "2023-09-08", "type": "meeting_note", "text": "Sarah has begun helping her elderly mother with living expenses. She raised concerns about future healthcare costs and asked to revisit her retirement budget." },
+      { "id": "sarah-003", "date": "2024-06-15", "type": "meeting_note", "text": "Sarah moved her retirement target from 2034 to 2031. She explicitly changed her risk preference to conservative and requested less portfolio volatility. No allocation changes were agreed during this meeting." },
+      { "id": "sarah-004", "date": "2025-01-22", "type": "portfolio_snapshot", "text": "Recorded portfolio value is $1,080,000, allocated 58% equities, 34% fixed income, and 8% cash. The allocation change follows the prior discussions about reducing volatility. Snapshot differences are not investment-return calculations." },
+      { "id": "sarah-005", "date": "2026-08-12", "type": "email", "text": "Sarah asked to review the beneficiaries on her retirement accounts. The advisor promised to send the current beneficiary list by September 1, 2026. This record does not confirm that any beneficiary was changed." },
+      { "id": "sarah-006", "date": "2026-09-10", "type": "call_note", "text": "Sarah now prefers quarterly phone calls rather than email-only check-ins, with a short written recap. She requested an updated retirement budget that includes healthcare costs. The advisor agreed to prepare it by October 15, 2026." },
+      { "id": "sarah-007", "date": "2026-10-01", "type": "task_update", "text": "The beneficiary-list follow-up remains open; no delivery confirmation is recorded. The healthcare retirement-budget update also remains pending. Sarah has not yet met the incoming advisor." }
+    ],
+    "tasks": [
+      { "id": "task-sarah-001", "title": "Send current beneficiary list and arrange a review", "status": "pending", "dueDate": "2026-09-01", "team": "Client Services", "sourceRecordIds": ["sarah-005", "sarah-007"] },
+      { "id": "task-sarah-002", "title": "Prepare retirement budget including healthcare costs", "status": "pending", "dueDate": "2026-10-15", "team": "Financial Planning", "sourceRecordIds": ["sarah-006", "sarah-007"] }
+    ]
+  },
+  {
+    "id": "client-002",
+    "name": "Marcus Bennett",
+    "synthetic": true,
+    "asOf": "2026-10-02",
+    "priority": "high",
+    "onboardingStatus": "in_progress",
+    "outstandingTaskCount": 2,
+    "profile": {
+      "clientSince": "2020-02-18",
+      "lifeStage": "Career transition",
+      "goals": ["Maintain liquidity during a job change", "Understand employer-stock exposure", "Consolidate account records"],
+      "riskPreference": "Moderate",
+      "retirementYear": 2042
+    },
+    "communicationPreferences": { "channel": "email", "frequency": "monthly", "notes": "Prefers detailed explanations and a scheduled call for major decisions." },
+    "portfolioHistory": [
+      { "date": "2023-04-20", "totalValueUsd": 640000, "allocation": { "equities": 70, "fixedIncome": 25, "cash": 5 }, "sourceRecordId": "marcus-001" },
+      { "date": "2026-09-18", "totalValueUsd": 710000, "allocation": { "equities": 65, "fixedIncome": 20, "cash": 15 }, "sourceRecordId": "marcus-004" }
+    ],
+    "history": [
+      { "id": "marcus-001", "date": "2023-04-20", "type": "portfolio_snapshot", "text": "Portfolio value is $640,000: 70% equities, 25% fixed income, 5% cash. Employer stock represents 35% of the total portfolio and is included within equities, not an additional asset class." },
+      { "id": "marcus-002", "date": "2025-11-06", "type": "meeting_note", "text": "Marcus describes his risk preference as moderate and retirement target as 2042. He wants detailed email explanations and a scheduled call before major decisions." },
+      { "id": "marcus-003", "date": "2026-08-28", "type": "email", "text": "Marcus plans to leave his employer in November 2026. He asked about available cash during the transition. The advisor promised a cash-flow review by October 9. No sale or investment instruction was issued." },
+      { "id": "marcus-004", "date": "2026-09-18", "type": "portfolio_snapshot", "text": "Portfolio value is $710,000: 65% equities, 20% fixed income, 15% cash. Employer stock is 38% of the total portfolio, included within equities. Higher cash and concentrated employer exposure are both context for the incoming advisor." },
+      { "id": "marcus-005", "date": "2026-09-25", "type": "service_note", "text": "Marcus reports that an account transfer submitted September 4 is still pending. Operations case DEMO-TRANSFER-002 has been opened. The advisor promised a status update by September 30. No resolution is recorded." },
+      { "id": "marcus-006", "date": "2026-10-01", "type": "meeting_note", "text": "Marcus met the incoming advisor. He said the delayed transfer is his immediate concern. The status-update commitment and cash-flow review remain open. He has not requested a change to his moderate risk preference." }
+    ],
+    "tasks": [
+      { "id": "task-marcus-001", "title": "Obtain transfer status and update Marcus", "status": "pending", "dueDate": "2026-09-30", "team": "Operations", "sourceRecordIds": ["marcus-005", "marcus-006"] },
+      { "id": "task-marcus-002", "title": "Review cash flow for the November job transition", "status": "pending", "dueDate": "2026-10-09", "team": "Financial Planning", "sourceRecordIds": ["marcus-003", "marcus-006"] }
+    ]
+  },
+  {
+    "id": "client-003",
+    "name": "Elena Rivera",
+    "synthetic": true,
+    "asOf": "2026-10-02",
+    "priority": "medium",
+    "onboardingStatus": "not_started",
+    "outstandingTaskCount": 1,
+    "profile": {
+      "clientSince": "2021-07-12",
+      "lifeStage": "Growing family",
+      "goals": ["Plan for education expenses", "Maintain an emergency reserve", "Retire in 2045"],
+      "riskPreference": "Moderate",
+      "retirementYear": 2045
+    },
+    "communicationPreferences": { "channel": "video", "frequency": "semiannual", "notes": "Prefers late-afternoon appointments and a concise email agenda." },
+    "portfolioHistory": [
+      { "date": "2022-05-05", "totalValueUsd": 280000, "allocation": { "equities": 70, "fixedIncome": 25, "cash": 5 }, "sourceRecordId": "elena-001" },
+      { "date": "2026-06-05", "totalValueUsd": 365000, "allocation": { "equities": 65, "fixedIncome": 25, "cash": 10 }, "sourceRecordId": "elena-004" }
+    ],
+    "history": [
+      { "id": "elena-001", "date": "2022-05-05", "type": "meeting_note", "text": "Elena's retirement target is 2045 and risk preference is moderate. Portfolio value is $280,000: 70% equities, 25% fixed income, 5% cash. Education planning is not currently listed as a goal." },
+      { "id": "elena-002", "date": "2024-02-16", "type": "email", "text": "Elena welcomed her first child and asked to include education expenses in future planning. She has not selected a funding target or account type." },
+      { "id": "elena-003", "date": "2025-10-23", "type": "meeting_note", "text": "Elena would like a larger emergency reserve. Her moderate risk preference and 2045 retirement target are unchanged. She prefers late-afternoon video meetings with a concise email agenda." },
+      { "id": "elena-004", "date": "2026-06-05", "type": "portfolio_snapshot", "text": "Portfolio value is $365,000: 65% equities, 25% fixed income, 10% cash. The notes associate the increased cash allocation with emergency-reserve discussions, not a change in stated risk preference." },
+      { "id": "elena-005", "date": "2026-09-17", "type": "meeting_note", "text": "The advisor agreed to prepare an education-planning discussion outline by October 20. It should present questions and assumptions to review, rather than assume a specific investment choice." },
+      { "id": "elena-006", "date": "2026-10-01", "type": "task_update", "text": "The education-planning outline remains pending. An introductory video meeting with the incoming advisor has not yet been arranged." }
+    ],
+    "tasks": [
+      { "id": "task-elena-001", "title": "Prepare education-planning discussion outline", "status": "pending", "dueDate": "2026-10-20", "team": "Financial Planning", "sourceRecordIds": ["elena-005", "elena-006"] }
+    ]
+  },
+  {
+    "id": "client-004",
+    "name": "David Chen",
+    "synthetic": true,
+    "asOf": "2026-10-02",
+    "priority": "medium",
+    "onboardingStatus": "in_progress",
+    "outstandingTaskCount": 1,
+    "profile": {
+      "clientSince": "2018-03-09",
+      "lifeStage": "Retired",
+      "goals": ["Maintain predictable retirement cash flow", "Keep account records current", "Coordinate year-end planning"],
+      "riskPreference": "Conservative",
+      "retirementYear": 2025
+    },
+    "communicationPreferences": { "channel": "phone", "frequency": "monthly", "notes": "Prefers plain-language explanations and a written recap." },
+    "portfolioHistory": [
+      { "date": "2023-01-19", "totalValueUsd": 1250000, "allocation": { "equities": 60, "fixedIncome": 35, "cash": 5 }, "sourceRecordId": "david-001" },
+      { "date": "2026-07-16", "totalValueUsd": 1190000, "allocation": { "equities": 45, "fixedIncome": 45, "cash": 10 }, "sourceRecordId": "david-004" }
+    ],
+    "history": [
+      { "id": "david-001", "date": "2023-01-19", "type": "meeting_note", "text": "David expects to retire in 2027 and reports a moderate risk preference. Portfolio value is $1,250,000: 60% equities, 35% fixed income, 5% cash." },
+      { "id": "david-002", "date": "2024-10-11", "type": "meeting_note", "text": "David moved his retirement date to June 2025 and described his risk preference as conservative. He requested a review of retirement cash flow." },
+      { "id": "david-003", "date": "2025-06-20", "type": "call_note", "text": "David confirmed he has retired. He requested monthly check-in calls and plain-language written recaps. Income needs should be confirmed with him rather than inferred from the account balance." },
+      { "id": "david-004", "date": "2026-07-16", "type": "portfolio_snapshot", "text": "Portfolio value is $1,190,000: 45% equities, 45% fixed income, 10% cash. Values reflect multiple snapshots; contributions, withdrawals, and market movements have not been separated." },
+      { "id": "david-005", "date": "2026-09-14", "type": "service_note", "text": "David requested an address update on September 11 after moving. Client Services confirmed the update today, September 14. The advisor also promised a year-end cash-flow review by October 23." },
+      { "id": "david-006", "date": "2026-10-01", "type": "meeting_note", "text": "David met the incoming advisor. The address update is complete; the year-end cash-flow review remains pending. No specific tax calculation or account distribution requirement was established in these records." }
+    ],
+    "tasks": [
+      { "id": "task-david-001", "title": "Update mailing address", "status": "completed", "dueDate": "2026-09-18", "completedDate": "2026-09-14", "team": "Client Services", "sourceRecordIds": ["david-005", "david-006"] },
+      { "id": "task-david-002", "title": "Prepare year-end retirement cash-flow review", "status": "pending", "dueDate": "2026-10-23", "team": "Financial Planning", "sourceRecordIds": ["david-005", "david-006"] }
+    ]
+  },
+  {
+    "id": "client-005",
+    "name": "Priya Shah",
+    "synthetic": true,
+    "asOf": "2026-10-02",
+    "priority": "low",
+    "onboardingStatus": "completed",
+    "outstandingTaskCount": 0,
+    "profile": {
+      "clientSince": "2022-08-04",
+      "lifeStage": "Mid-career",
+      "goals": ["Retire in 2040", "Maintain a long-term savings plan", "Review goals annually"],
+      "riskPreference": "Moderate",
+      "retirementYear": 2040
+    },
+    "communicationPreferences": { "channel": "email", "frequency": "quarterly", "notes": "Prefers concise bullet points and an annual video review." },
+    "portfolioHistory": [
+      { "date": "2023-08-10", "totalValueUsd": 420000, "allocation": { "equities": 65, "fixedIncome": 30, "cash": 5 }, "sourceRecordId": "priya-001" },
+      { "date": "2026-08-14", "totalValueUsd": 515000, "allocation": { "equities": 65, "fixedIncome": 30, "cash": 5 }, "sourceRecordId": "priya-003" }
+    ],
+    "history": [
+      { "id": "priya-001", "date": "2023-08-10", "type": "meeting_note", "text": "Priya targets retirement in 2040 and has a moderate risk preference. Portfolio value is $420,000: 65% equities, 30% fixed income, 5% cash. She prefers concise quarterly emails." },
+      { "id": "priya-002", "date": "2025-08-15", "type": "meeting_note", "text": "Annual review: retirement target and risk preference are unchanged. Priya prefers one annual video meeting and quarterly bullet-point emails." },
+      { "id": "priya-003", "date": "2026-08-14", "type": "portfolio_snapshot", "text": "Portfolio value is $515,000 with allocation unchanged at 65% equities, 30% fixed income, 5% cash. The records do not isolate investment returns from contributions." },
+      { "id": "priya-004", "date": "2026-09-04", "type": "email", "text": "Priya requested a copy of her current planning assumptions. The advisor promised to send them by September 11." },
+      { "id": "priya-005", "date": "2026-09-10", "type": "task_update", "text": "The planning-assumptions document was sent September 9. Priya acknowledged receipt today, September 10. The commitment is complete." },
+      { "id": "priya-006", "date": "2026-09-24", "type": "meeting_note", "text": "Introductory video meeting with the incoming advisor completed. Priya confirmed her preferences and goals. Onboarding review marked complete. No outstanding client commitments are recorded at this review." }
+    ],
+    "tasks": [
+      { "id": "task-priya-001", "title": "Send current planning assumptions", "status": "completed", "dueDate": "2026-09-11", "completedDate": "2026-09-09", "team": "Financial Planning", "sourceRecordIds": ["priya-004", "priya-005"] }
+    ]
+  }
+]
