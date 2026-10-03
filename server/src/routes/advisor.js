@@ -3,6 +3,8 @@ import { z } from 'zod';
 
 import { generateClientBriefing } from '../ai/briefing.js';
 import { requireAuth } from '../middleware/requireAuth.js';
+import { getClientById } from '../data/clients.js';
+import { adaptClientForBriefing } from '../ai/clientAdapter.js';
 
 const requestSchema = z.object({
   client: z.object({
@@ -30,6 +32,11 @@ const requestSchema = z.object({
       .optional(),
   }),
 });
+export function advisorRouter({ jwtSecret }) {
+  const router = Router();
+
+  router.use(requireAuth(jwtSecret));
+
 router.post('/briefing/:clientId', async (req, res, next) => {
   try {
     const rawClient = await getClientById(req.params.clientId)
@@ -54,10 +61,7 @@ router.post('/briefing/:clientId', async (req, res, next) => {
   }
 })
 
-export function advisorRouter({ jwtSecret }) {
-  const router = Router();
 
-  router.use(requireAuth(jwtSecret));
 
   router.post('/briefing', async (req, res, next) => {
     try {
