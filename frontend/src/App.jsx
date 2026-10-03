@@ -37,7 +37,7 @@ const [showPassword, setShowPassword] = useState(false)
     <div className="loginPage">
 
       <header className="header">
-        <div className="logo">LPL Financial</div>
+        <div className="logo">Oriented</div>
       </header>
 
       <main className="loginBox">
