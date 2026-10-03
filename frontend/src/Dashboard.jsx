@@ -69,7 +69,7 @@ function Dashboard({onClientSelect, session}) {
 
     },
     {
-      id: 'client-001',
+      id: 'client-002',
       name: 'Marcus Bennett',
       initials: 'MB',
       status: 'Reviewed',
