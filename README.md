@@ -11,12 +11,16 @@ An AI-powered onboarding workspace that helps financial advisors understand clie
 </div>
 
 ---
+Temporary Email: client@lpl.com
+Temporary Password: pass123
 
 ## 🎯 Overview
 
 When an advisor takes responsibility for an existing client, understanding the relationship requires more than reading the latest account balance. Important context lives across meeting notes, portfolio records, changing goals, and unresolved requests.
 
 Oriented brings that information into one onboarding workflow. It helps advisors identify what changed, understand earlier commitments, and generate an AI briefing before the first meeting.
+
+Temporary Email/Password: 
 
 ## ✨ Key Features
 
