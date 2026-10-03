@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 import {
   Bell,
   BellRing,
@@ -191,8 +193,12 @@ function Dashboard({onClientSelect}) {
 
         {/* the page content goes here */}
 
-        <div className="pageContent">
-
+        <motion.div
+            className= "pageContent"
+            initial ={{opacity: 0, y:14}}
+            animate= {{opacity: 1,y:0}}
+            transition= {{duration: 0.4, ease: 'easeOut'}}
+        >
           {/*advisor section*/}
 
           <section className="advisorSection">
@@ -215,7 +221,7 @@ function Dashboard({onClientSelect}) {
             </div>
 
             <div className="dateDisplay">
-              <span>Friday, October 2</span>
+              <span>Friday, October 3</span>
               <strong>2026</strong>
             </div>
 
@@ -606,7 +612,7 @@ function Dashboard({onClientSelect}) {
 
           </section>
 
-        </div>
+        </motion.div>
 
       </main>
 

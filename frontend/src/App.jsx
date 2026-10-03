@@ -20,16 +20,16 @@ const [showPassword, setShowPassword] = useState(false)
     setIsLoading(true)
 
     try {
-      setSession(await login(email, password))
-      setPassword('')
-      setShowPassword(false)
+       setSession(await login(email, password))
+       setPassword('')
+       setShowPassword(false)
     } catch (err) {
       setError(err.message)
     } finally {
       setIsLoading(false)
     }
-  }
 
+  }
   if (session) {
     return <Dashboard />
   }
@@ -44,19 +44,7 @@ const [showPassword, setShowPassword] = useState(false)
 
         <div className="loginContent">
 
-          {session ? (
-            <section className="loginHeader" aria-label="Signed-in account">
-              <h1>You’re signed in</h1>
-              <p>{session.user.email}</p>
-              <button type="button" className="LogInButton" onClick={() => {
-                setSession(null)
-                setPassword('')
-                setError('')
-              }}>
-                Sign out
-              </button>
-            </section>
-          ) : <>
+          
           <div className="loginHeader">
             <h1>Welcome back!</h1>
             <p>Sign in to your client account</p>
@@ -118,13 +106,14 @@ const [showPassword, setShowPassword] = useState(false)
               <span>Remember me</span>
             </label>
 
-{error && <div className="errorLogin" role="alert">{error}</div>}
-<button type="submit" className="LogInButton" disabled={isLoading}>
-  {isLoading ? 'Signing in…' : 'Log in'}
-            </button>
+         {error && <div className="errorLogin" role="alert">{error}</div>}
+
+          <button type="submit" className="LogInButton" disabled={isLoading}>
+          {isLoading ? 'Signing in…' : 'Log in'}
+         </button>
 
           </form>
-          </>}
+        
 
         
 
