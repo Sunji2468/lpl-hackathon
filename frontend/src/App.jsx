@@ -5,11 +5,9 @@ import Dashboard from './Dashboard'
 
 function App() {
 
-  const [showPassword, setShowPassword] = useState(false)
-  const [page, setPage] = useState('login')
+const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-<<<<<<< HEAD
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [session, setSession] = useState(null)
@@ -17,8 +15,10 @@ function App() {
   const handleLogin = async (e) => {
     e.preventDefault()
     if (isLoading) return
+
     setError('')
     setIsLoading(true)
+
     try {
       setSession(await login(email, password))
       setPassword('')
@@ -28,25 +28,11 @@ function App() {
     } finally {
       setIsLoading(false)
     }
-
-  const [loginError, setLoginError] = useState('')
-
-  const handleLogin = (event) => {
-    event.preventDefault()
-    setLoginError('')
-
-    if (email === 'client@lpl.com' && password === 'pass123') {
-      setPage('dashboard')
-    } else {
-      setLoginError('Invalid email or password')
-    }
-}
-
-
-    if (page === 'dashboard') {
-    return <Dashboard />
   }
 
+  if (session) {
+    return <Dashboard />
+  }
   return (
     <div className="loginPage">
 
@@ -132,15 +118,9 @@ function App() {
               <span>Remember me</span>
             </label>
 
-<<<<<<< HEAD
-            {error && <div className="errorLogin" role="alert">{error}</div>}
-            <button type="submit" className="LogInButton" disabled={isLoading}>
-              {isLoading ? 'Signing in…' : 'Log in'}
-=======
-            {loginError && <div className="errorLogin">{loginError}</div>}
-            <button type="submit" className="LogInButton">
-              Log in
->>>>>>> 5b423fb (Polish dashboard and login layout)
+{error && <div className="errorLogin" role="alert">{error}</div>}
+<button type="submit" className="LogInButton" disabled={isLoading}>
+  {isLoading ? 'Signing in…' : 'Log in'}
             </button>
 
           </form>
