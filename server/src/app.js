@@ -1,5 +1,6 @@
 import express from 'express';
 import { authRouter } from './routes/auth.js';
+import { advisorRouter } from './routes/advisor.js';
 
 export function createApp({ prisma, jwtSecret }) {
   const app = express();
@@ -7,6 +8,7 @@ export function createApp({ prisma, jwtSecret }) {
   app.disable('x-powered-by');
   app.use(express.json({ limit: '16kb' }));
   app.use('/api/auth', authRouter({ prisma, jwtSecret }));
+  app.use('/api/advisor', advisorRouter({ jwtSecret }));
 
   app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the LPL API' });
