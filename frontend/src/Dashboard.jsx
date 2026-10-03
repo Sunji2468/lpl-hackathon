@@ -27,7 +27,7 @@ import {
 
 import './Dashboard.css'
 
-function Dashboard({onClientSelect, session}) {
+function Dashboard({ session }) {
   const [aiBriefing, setAiBriefing] = useState(null)
   const [selectedClient, setSelectedClient] = useState(null)
   const [aiLoading, setAiLoading] = useState(false)
@@ -69,7 +69,7 @@ function Dashboard({onClientSelect, session}) {
 
     },
     {
-      id: 'client-001',
+      id: 'client-002',
       name: 'Marcus Bennett',
       initials: 'MB',
       status: 'Reviewed',
