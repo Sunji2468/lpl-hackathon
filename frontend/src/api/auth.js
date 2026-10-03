@@ -8,7 +8,7 @@ if (
   return {
     user: {
       id: 'demo-advisor',
-      email: 'demo@example.com',
+      email: 'client@lpl.com',
     },
     token: null,
     isDemo: true,
