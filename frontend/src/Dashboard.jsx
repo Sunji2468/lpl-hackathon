@@ -256,7 +256,7 @@ function Dashboard({onClientSelect}) {
           </section>
 
 
-          {/* STATS */}
+          {/* client stats section is here */}
 
           <section className="statsGrid">
 
@@ -370,7 +370,7 @@ function Dashboard({onClientSelect}) {
           </section>
 
 
-          {/* CLIENT SECTION */}
+          {/* client info section is here */}
 
           <section className="clientSection">
 
@@ -455,7 +455,7 @@ function Dashboard({onClientSelect}) {
                   </div>
 
 
-                  {/* AI INSIGHT */}
+                  {/* AI review is here */}
 
                   <div className="insightBox">
 
